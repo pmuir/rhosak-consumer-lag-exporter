@@ -12,7 +12,7 @@ RUN go build
 
 # ---------------------------------------------------------------------------- #
 
-FROM registry.access.redhat.com/ubi8/ubi:latest
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 COPY --from=builder --chown=root:root /opt/app-root/src/rhosak-consumer-lag-exporter /opt/app-root/src/rhosak-consumer-lag-exporter
 
