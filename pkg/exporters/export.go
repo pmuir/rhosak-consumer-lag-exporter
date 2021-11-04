@@ -37,7 +37,7 @@ func Export(clientId string, clientSecret string, tokenURL string, bootstrapServ
 		http.HandleFunc("/data", dataHandler)
 		http.HandleFunc("/health", healthHandler)
 
-		http.ListenAndServe(fmt.Sprintf("%s:%d", host, port), nil)
+		return http.ListenAndServe(fmt.Sprintf("%s:%d", host, port), nil)
 	}
 	return run(clientId, clientSecret, tokenURL, bootstrapServers, format, os.Stdout)
 }
