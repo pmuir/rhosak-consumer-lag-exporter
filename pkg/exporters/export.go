@@ -29,7 +29,13 @@ func Export(clientId string, clientSecret string, tokenURL string, bootstrapServ
 			}
 		}
 
+		healthHandler := func(w http.ResponseWriter, req *http.Request) {
+			w.WriteHeader(200)
+			w.Write([]byte("ok"))
+		}
+
 		http.HandleFunc("/data", dataHandler)
+		http.HandleFunc("/health", healthHandler)
 
 		http.ListenAndServe(fmt.Sprintf("%s:%d", host, port), nil)
 	}

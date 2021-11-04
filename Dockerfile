@@ -16,6 +16,6 @@ FROM registry.access.redhat.com/ubi8/ubi:latest
 
 COPY --from=builder --chown=root:root /opt/app-root/src/rhosak-consumer-lag-exporter /opt/app-root/src/rhosak-consumer-lag-exporter
 
-EXPOSE 7834
+EXPOSE 80
 
 CMD ["/opt/app-root/src/rhosak-consumer-lag-exporter", "export", "--serve", "--host=0.0.0.0", "--port=80"]
