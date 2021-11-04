@@ -18,4 +18,6 @@ COPY --from=builder --chown=root:root /opt/app-root/src/rhosak-consumer-lag-expo
 
 EXPOSE 80
 
+USER 1001
+
 CMD ["/opt/app-root/src/rhosak-consumer-lag-exporter", "export", "--serve", "--host=0.0.0.0", "--port=80"]
