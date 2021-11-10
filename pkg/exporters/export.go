@@ -8,6 +8,7 @@ import (
 	"golang.org/x/oauth2/clientcredentials"
 	"gopkg.in/errgo.v2/errors"
 	"io"
+	"math"
 	"net/http"
 	"os"
 	"strings"
@@ -80,7 +81,7 @@ func getData(clientId string, clientSecret string, tokenURL string, apiURL strin
 		BaseURL:    apiURL,
 	})
 
-	res, _, err := apiClient.GroupsApi.GetConsumerGroups(ctx).Execute()
+	res, _, err := apiClient.GroupsApi.GetConsumerGroups(ctx).Limit(math.MaxInt32).Execute()
 	if err != nil {
 		return nil, err
 	}
