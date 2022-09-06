@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,17 +16,18 @@ limitations under the License.
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"os"
 	"rhosak-consumer-lag-exporter/pkg/exporters"
 	"strings"
+
+	"github.com/spf13/cobra"
 )
 
 // exportCmd represents the export command
 var exportCmd = &cobra.Command{
 	Use:   "export",
 	Short: "Export the consumer lag",
-	Long: ``,
+	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		clientID, _ := cmd.Flags().GetString("clientId")
 		if clientID == "" {
@@ -56,7 +57,7 @@ func init() {
 
 	exportCmd.Flags().String("clientId", "", "Client ID to use, or use the environment variable CLIENT_ID")
 	exportCmd.Flags().String("clientSecret", "", "Client Secret to use, or use the environment variable CLIENT_SECRET")
-	exportCmd.Flags().String("tokenURL", "https://identity.api.openshift.com/auth/realms/rhoas/protocol/openid-connect/token", "The token endpoint to use")
+	exportCmd.Flags().String("tokenURL", "https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token", "The token endpoint to use")
 	exportCmd.Flags().StringArray("bootstrapServer", make([]string, 0), "The bootstrap server, or use a semi-colon separated list in the environment variable BOOTSTRAP_SERVERS")
 	exportCmd.Flags().Bool("serve", false, "If true, will run an http server")
 	exportCmd.Flags().Int("port", 7843, "The port to run the http server on")
